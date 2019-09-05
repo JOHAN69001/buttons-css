@@ -1,0 +1,229 @@
+<button class="button slidedown">Slide Down</button>
+<button class="button slideleft">Slide Left</button>
+<button class="button slidebottomleft">Slide Corner</button>
+<button class="button angleinleft">Angle In</button>
+<br />
+
+<button class="button slidedown bouncein">Slide Down Bouncing</button>
+<button class="button slideleft bouncein">Slide Left Bouncing</button>
+<button class="button slidebottomleft bouncein">Slide Corner Bouncing</button>
+<button class="button angleinleft bouncein">Angle In Bouncing</button>
+
+
+<br />
+<button class="button curtaindown">Curtain Down</button>
+<button class="button curtainup">Curtain Up</button>
+<button class="button curtaincenter">Curtain Center</button>
+<button class="button angleindouble" type="submit">Double Angle</button>
+<button class="button doubletake">Double Take</button>
+
+
+<style>
+  .button {
+    display: inline-block;
+    position: relative;
+    color: white; 
+    outline: none;
+    background: transparent;
+    border: none;
+    border-radius: .2em;
+    letter-spacing: 0.06em;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    font: bold 16px sans-serif; 
+    line-height: 2;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all .5s;
+  }
+
+  .button::before,
+  .button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: #1f8eed; /* hover background color */
+    z-index: -1;
+    transition: all .5s;
+  }
+
+  .button::before{
+    background: #00ccff; // background-color
+    z-index: -2;
+  }
+
+  .button:hover::after {
+    transition: all .5s;
+  }
+
+  /* //// Slide down //// */
+  .slidedown::after {
+      transform: translate3D(0,-100%,0); /* move elements above button so they don't appear initially */
+  }
+
+  .slidedown:hover::after {
+      transform: translate3D(0,0,0);
+  }
+
+  /* //// Slide Left  //// */
+
+  .slideleft::after {
+      transform: translate3D(-101%,0,0);
+  }
+
+  .slideleft:hover::after {
+      transform: translate3D(0,0,0);
+  }
+
+  /* //// Slide Corner  //// */
+
+  .slidebottomleft::after{
+    transform: translate3D(-100%,100%,0);
+  }
+
+  .slidebottomleft:hover::after{
+    transform: translate3D(0,0,0);
+  }
+
+  /* //// Angle In  //// */
+
+
+  .angleinleft::after{
+    width: 200%;
+    transform-origin: left bottom;
+    transform: translate3D(-50%,0,0) rotate(-50deg);
+  }
+
+  .angleinleft:hover::after{
+    transform: rotate(0deg);
+  }
+
+  /* //// Add a bounce effect  with class bouncein//// */
+
+  .bouncein:hover::before,
+  .bouncein:hover::after{
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66) !important;
+  }
+
+
+  /* //// Curtain Down  //// */
+
+  .curtaindown {
+    background-color: rgba(31, 142, 237, 0.6);
+  }
+
+  .curtaindown::before {
+    background: #1f8eed;
+    transform: translate3D(0,-100%,0);
+  }
+
+  .curtaindown::after {
+    background: #1f8eed;
+    transform: translate3D(0,100%,0);
+  }
+
+  .curtaindown:hover::before {
+    transform: translate3D(0,-50%,0);
+  }
+
+  .curtaindown:hover::after {
+    transform: translate3D(0,50%,0);
+  }
+
+  /* //// Curtain Up  //// */
+
+  .curtainup {
+    background-color: rgba(31, 142, 237, 0.6);
+  }
+
+  .curtainup::before,
+  .curtainup::after{
+    transform-origin: center center;
+    transform: scale(1,0);
+  }
+
+
+  .curtainup:hover::before,
+  .curtainup:hover::after{
+    transform: scale(1);
+    border-radius: 0;
+  }
+
+  /* //// Curtain Center  //// */
+
+  .curtaincenter:after{
+    transform-origin: center center;
+    transform: scale(0);
+  }
+
+  .curtaincenter:hover:after{
+    transform: scale(1);
+  }
+
+  /* //// Double Angle In  //// */
+
+  .angleindouble{
+    background-color: rgba(31, 142, 237, 0.6);
+  }
+
+  .angleindouble::before{
+    top: 0;
+    left: 0;
+    width: 150%;
+    background: #1f8eed;
+    transform-origin: left bottom;
+    transform:  translateX(-100%) rotate(-30deg);
+  }
+
+  .angleindouble::after{
+    top: 0;
+    left: auto;
+    right: 0;
+    width: 150%;
+    transform-origin: right bottom;
+    transform: translateX(100%) rotate(30deg);
+  }
+
+  .angleindouble:hover::before{
+    left: 0;
+    transform: rotate(0deg);
+  }
+
+  .angleindouble:hover::after{
+    right: 0;
+    transform: rotate(0deg);
+  }
+
+  /* //// Double Take  //// */
+
+  .doubletake {
+    background-color: rgba(31, 142, 237, 0.6);
+  }
+  .doubletake::before,
+  .doubletake::after{
+    width: 200%;
+    background: #1f8eed;
+    transform-origin: 0 bottom;
+    transform: translate3D(-50%,0,0) rotate(-50deg);
+  }
+
+  .doubletake:before{
+    opacity: .4;
+  }
+
+  .doubletake:hover:before,
+  .doubletake:hover:after{
+    transform: rotate(0deg);
+  }
+
+  .doubletake:hover:after{
+    transition-delay: .25s;
+  }
+</style>
