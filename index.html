@@ -17,6 +17,9 @@
 <button class="button angleindouble" type="submit">Double Angle</button>
 <button class="button doubletake">Double Take</button>
 
+<br />
+<button class="button lineargradient">linear gradient</button>
+
 
 <style>
   .button {
@@ -226,4 +229,21 @@
   .doubletake:hover:after{
     transition-delay: .25s;
   }
+  
+  
+  /* //// Linear Gradient  //// */
+
+.lineargradient {
+  background-image: linear-gradient(
+    90deg,
+    #1f8eed  0%,
+    #00CCFF 51%,
+    #1f8eed
+  );
+  background-size: 200% auto;
+}
+
+.lineargradient:hover {
+  background-position: 100%;
+}
 </style>
