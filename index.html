@@ -19,10 +19,13 @@
 
 <br />
 <button class="button lineargradient">linear gradient</button>
+<button class="btn borderin">border in</button>
+<button class="btn borderout">border out</button>
 
 
 <style>
-  .button {
+  .button,
+  .btn {
     display: inline-block;
     position: relative;
     color: white; 
@@ -245,5 +248,71 @@
 
 .lineargradient:hover {
   background-position: 100%;
+}
+  
+  /* //// border IN  //// */
+.borderin {
+  color: #00CCFF;
+  border-radius: 0;
+  letter-spacing: 2px;
+}
+
+.borderin::before,
+.borderin::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 5px;
+  background: #00CCFF;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: all .4s;
+}
+    
+.borderin::before{
+  top: 0;
+}
+    
+.borderin::after{
+  bottom: 0;
+}
+    
+.borderin:hover::before,
+.borderin:hover::after{
+  transform: scaleX(1);
+}
+
+  /* //// border OUT  //// */
+.borderout {
+  color: #00CCFF;
+  border-radius: 0;
+  letter-spacing: 2px;
+}
+
+.borderout::before,
+.borderout::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 5px;
+  background: #00CCFF;
+  transform: scaleX(1);
+  transform-origin: center;
+  transition: all .4s;
+}
+    
+.borderout::before{
+  top: 0;
+}
+    
+.borderout::after{
+  bottom: 0;
+}
+    
+.borderout:hover::before,
+.borderout:hover::after{
+  transform: scaleX(0);
 }
 </style>
